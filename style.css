@@ -23,14 +23,13 @@ body {
   gap: 40px;
 }
 
-.nav-item h2 {
+.main-nav a {
   color: white;
+  text-decoration: none;
   font-size: 18px;
-  margin: 0;
-  cursor: pointer;
 }
 
-.nav-item h2:hover {
+.main-nav a:hover {
   color: #4f4739;
 }
 
