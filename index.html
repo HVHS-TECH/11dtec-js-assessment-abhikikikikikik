@@ -40,6 +40,12 @@
       <h1>Masa & Lime</h1>
       <p>Welcome to our website!</p>
 
+      <form onsubmit="return false;" style="margin-bottom: 30px">
+        <label for="orderField">Dining preference:</label>
+        <input type="text" id="orderField" placeholder="Dine In / Takeout" />
+        <input type="submit" onClick="getFormInput()" value="Submit" />
+      </form>
+
       <div class="mainmenu-grid">
         <div class="food-card">
           <img

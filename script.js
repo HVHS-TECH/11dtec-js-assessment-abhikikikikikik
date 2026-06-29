@@ -5,23 +5,27 @@ Header
 // Variables
 
 const welcomeMessage = document.querySelector(".container p");
-let guestName = localStorage.getItem("savedName");
+let orderType = sessionStorage.getItem("savedOrderType");
 
 /******************************
  Main code
  ******************************/
 
-if (!guestName) {
-  guestName = prompt("Welcome to Masa & Lime! What is your name?");
-  if (guestName) {
-    localStorage.setItem("savedName", guestName);
-  }
-}
-
-if (guestName) {
-  welcomeMessage.textContent = "Welcome, " + guestName + "!";
+if (orderType) {
+  welcomeMessage.textContent = "Setting up your menu for: " + orderType + "!";
 }
 
 /******************************
 Functions
  ******************************/
+
+function getFormInput() {
+  const ORDER_FIELD = document.getElementById("orderField");
+  let userChoice = ORDER_FIELD.value;
+
+  if (userChoice) {
+    sessionStorage.setItem("savedOrderType", userChoice);
+    welcomeMessage.textContent =
+      "Setting up your menu for: " + userChoice + "!";
+  }
+}
