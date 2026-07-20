@@ -29,15 +29,10 @@ function updateQuantity(button, change) {
   let itemName = card.dataset.name;
   let price = card.dataset.price;
 
-  let currentQty = parseInt(quantity.innerText) + change;
-
-  if (currentQty < 0) {
-    currentQty = 0;
-  }
-
-  if (currentQty > 9) {
-    currentQty = 9;
-  }
+  let currentQty = Math.max(
+    0,
+    Math.min(9, parseInt(quantity.innerText) + change),
+  );
 
   quantity.innerText = currentQty;
 
@@ -120,13 +115,8 @@ function renderCheckout() {
   document.getElementById("grand-total").innerText =
     "Total: $" + grandTotal.toFixed(2);
 
-  if (checkoutForm) {
-    if (grandTotal > 0) {
-      checkoutForm.style.display = "flex";
-    } else {
-      checkoutForm.style.display = "none";
-    }
-  }
+  if (checkoutForm)
+    checkoutForm.style.display = grandTotal > 0 ? "flex" : "none";
 }
 
 function changeQty(name, change) {
