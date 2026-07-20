@@ -2,22 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Sides</title>
+    <title>Sides | Masa & Lime</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="images/masaandlimelogo.jpg" />
   </head>
 
   <body>
     <header class="top-bar">
-      <img
-        src="images/masaandlimelogo.jpg"
-        class="logo"
-        alt="Masa & Lime Logo"
-      />
+      <a href="index.html">
+        <img
+          src="images/masaandlimelogo.jpg"
+          class="logo"
+          alt="Masa & Lime Logo"
+        />
+      </a>
 
       <nav class="main-nav">
-        <div class="nav-item">
-          <a href="maindishes.html">Main Dishes</a>
+        <div class="nav-item dropdown">
+          <span class="dropdown-trigger">Main Dishes</span>
+          <div class="dropdown-menu">
+            <a href="meat.html">Meat</a>
+            <a href="seafood.html">Seafood</a>
+            <a href="vegetarian.html">Vegetarian</a>
+          </div>
         </div>
 
         <div class="nav-item">
@@ -26,6 +33,16 @@
 
         <div class="nav-item">
           <a href="sides.html">Sides</a>
+        </div>
+        <div class="nav-item">
+          <a href="checkout.html">
+            <img
+              src="images/checkouttrolley.png"
+              alt="Checkout"
+              class="trolley-icon"
+              style="width: 30px; height: auto"
+            />
+          </a>
         </div>
       </nav>
     </header>
@@ -36,35 +53,205 @@
       <div class="mainmenu-grid">
         <div class="food-card">
           <img
-            src="images/tacosdepescadaseafood.png"
-            alt="Fish and shrimp tacos"
+            src="images/arrozconcocosides.jpg"
+            alt="Arroz Con Cocos"
+            onclick="toggleCardExpand(this)"
+            style="cursor: pointer"
           />
-          <div class="card-info">
-            <h3>Fish Tacos</h3>
+          <div class="card-info" data-name="Arroz con Coco" data-price="7.50">
+            <h3>Arroz con Coco</h3>
+            <p><strong>$7.50</strong></p>
+            <p>
+              Fluffy white rice simmered with coconut milk and a hint of lime,
+              garnished with fresh cilantro.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
           </div>
         </div>
 
         <div class="food-card">
           <img
-            src="images/pescadozarandeadoseafood.png"
-            alt="Lime margarita drink"
+            src="images/ensladadejicamaymangosides.jpg"
+            alt="Enslada de ji Camay Mango"
+            onclick="toggleCardExpand(this)"
+            style="cursor: pointer"
           />
-          <div class="card-info">
-            <h3>Mexican Char-Grilled Fish</h3>
+          <div
+            class="card-info"
+            data-name="Ensladade Jicama y Mango"
+            data-price="9.00"
+          >
+            <h3>Ensladade Jicama y Mango</h3>
+            <p><strong>$9.00</strong></p>
+            <p>
+              Crisp jícama and sweet mango matchsticks tossed with lime juice,
+              chili powder, and fresh mint.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
           </div>
         </div>
 
         <div class="food-card">
           <img
-            src="images/quesabirriameat.png"
-            alt="Tortilla chips and guacamole"
+            src="images/frijolesdelaollasides.jpg"
+            alt="Frijole Del Aolla"
+            onclick="toggleCardExpand(this)"
+            style="cursor: pointer"
           />
-          <div class="card-info">
-            <h3>Quesa Birria</h3>
+          <div
+            class="card-info"
+            data-name="Frijole de la Olla"
+            data-price="6.00"
+          >
+            <h3>Frijole de la Olla</h3>
+            <p><strong>$6.00</strong></p>
+            <p>
+              Slow-simmered black beans infused with epazote, garlic, and
+              onions, topped with a sprinkle of crumbled cotija cheese.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img
+            src="images/cevichesdecamaronesides.jpg"
+            alt="Ceviche de Camarone"
+            onclick="toggleCardExpand(this)"
+            style="cursor: pointer"
+          />
+          <div
+            class="card-info"
+            data-name="Ceviches de Camarone"
+            data-price="16.50"
+          >
+            <h3>Ceviches de Camarone</h3>
+            <p><strong>$16.50</strong></p>
+            <p>
+              Fresh shrimp cured in lime juice, tossed with diced tomatoes,
+              cucumbers, red onions, cilantro, and fresh avocado. Served with
+              crispy tostadas.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img
+            src="images/platanosfritossides.jpg"
+            alt="Platano Fritos"
+            onclick="toggleCardExpand(this)"
+            style="cursor: pointer"
+          />
+          <div class="card-info" data-name="Platanos Fritos" data-price="8.50">
+            <h3>Platanos Fritos</h3>
+            <p><strong>$8.50</strong></p>
+            <p>
+              Crispy, golden-fried sweet plantains served with a side of Mexican
+              crema and a dusting of cotija cheese.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
           </div>
         </div>
       </div>
     </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 40px">
+      <button
+        id="cancel-btn"
+        onclick="showConfirm()"
+        style="
+          padding: 10px 20px;
+          cursor: pointer;
+          background-color: #968d83;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        "
+      >
+        Cancel All
+      </button>
+
+      <div id="confirm-msg" style="display: none; margin-top: 15px">
+        <p>
+          Are you sure?
+          <button
+            onclick="clearCart()"
+            style="
+              color: #ff4d4d;
+              border: none;
+              background: none;
+              cursor: pointer;
+              font-weight: bold;
+            "
+          >
+            Yes
+          </button>
+          <button
+            onclick="hideConfirm()"
+            style="
+              color: #968d83;
+              border: none;
+              background: none;
+              cursor: pointer;
+            "
+          >
+            No
+          </button>
+        </p>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

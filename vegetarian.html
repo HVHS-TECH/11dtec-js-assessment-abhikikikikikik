@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vegetarian | Masa & Lime</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/masaandlimelogo.jpg" />
+  </head>
+
+  <body>
+    <header class="top-bar">
+      <a href="index.html">
+        <img
+          src="images/masaandlimelogo.jpg"
+          class="logo"
+          alt="Masa & Lime Logo"
+        />
+      </a>
+      <nav class="main-nav">
+        <div class="nav-item dropdown">
+          <span class="dropdown-trigger">Main Dishes</span>
+          <div class="dropdown-menu">
+            <a href="meat.html">Meat</a>
+            <a href="seafood.html">Seafood</a>
+            <a href="vegetarian.html">Vegetarian</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="drinks.html">Drinks</a></div>
+        <div class="nav-item"><a href="sides.html">Sides</a></div>
+        <div class="nav-item">
+          <a href="checkout.html">
+            <img
+              src="images/checkouttrolley.png"
+              alt="Checkout"
+              class="trolley-icon"
+              style="width: 30px; height: auto"
+            />
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Vegetarian Dishes</h1>
+
+      <div class="mainmenu-grid">
+        <div class="food-card">
+          <img src="images/chilesrellenosveg.jpg" alt="Chiles Rellenos" />
+          <div class="card-info" data-name="Chiles Rellenos" data-price="17.50">
+            <h3>Chiles Rellenos</h3>
+            <p><strong>$17.50</strong></p>
+            <p>
+              Roasted poblano peppers stuffed with a melted blend of Mexican
+              cheeses, lightly battered and fried until golden, then smothered
+              in a warm, savory tomato sauce.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/eloteasadoveg.jpg" alt="Elote Asado" />
+          <div class="card-info" data-name="Elote Asado" data-price="20.00">
+            <h3>Elote Asado</h3>
+            <p><strong>$20.00</strong></p>
+            <p>
+              Charred sweet corn on the cob brushed with a savory crema, dusted
+              with cotija cheese and chili powder, served with a fresh lime
+              wedge.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img
+            src="images/guacamolecontotoposveg.png"
+            alt="Guacamole con Totopos"
+          />
+          <div
+            class="card-info"
+            data-name="Guacamole con Totopos"
+            data-price="15.00"
+          >
+            <h3>Guacamole con Totopos</h3>
+            <p><strong>$15.00</strong></p>
+            <p>
+              Creamy, house-made guacamole mashed with fresh lime juice,
+              cilantro, onions, and jalapeños, served alongside warm, crispy
+              tortilla chips.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/tacosdehongosveg.png" alt="Tacos de Hongos" />
+          <div class="card-info" data-name="Tacos de Hongos" data-price="18.50">
+            <h3>Tacos de Hongos</h3>
+            <p><strong>$18.50</strong></p>
+            <p>
+              Earthy, garlic-sautéed mushrooms tucked into warm corn tortillas,
+              topped with fresh cilantro, diced onions, and a splash of bright
+              salsa.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/vegetablefajitasveg.png" alt="Vegetable Fajitas" />
+          <div
+            class="card-info"
+            data-name="Vegetable Fajitas"
+            data-price="17.00"
+          >
+            <h3>Vegetable Fajitas</h3>
+            <p><strong>$17.00</strong></p>
+            <p>
+              A sizzling medley of bell peppers, onions, and seasonal
+              vegetables, served hot with warm tortillas, fresh guacamole, and
+              pico de gallo.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 40px">
+      <button
+        id="cancel-btn"
+        onclick="showConfirm()"
+        style="
+          padding: 10px 20px;
+          cursor: pointer;
+          background-color: #968d83;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        "
+      >
+        Cancel All
+      </button>
+
+      <div id="confirm-msg" style="display: none; margin-top: 15px">
+        <p>
+          Are you sure?
+          <button
+            onclick="clearCart()"
+            style="
+              color: #ff4d4d;
+              border: none;
+              background: none;
+              cursor: pointer;
+              font-weight: bold;
+            "
+          >
+            Yes
+          </button>
+          <button
+            onclick="hideConfirm()"
+            style="
+              color: #968d83;
+              border: none;
+              background: none;
+              cursor: pointer;
+            "
+          >
+            No
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

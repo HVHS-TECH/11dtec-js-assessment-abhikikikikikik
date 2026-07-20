@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Seafood | Masa & Lime</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/masaandlimelogo.jpg" />
+  </head>
+
+  <body>
+    <header class="top-bar">
+      <a href="index.html">
+        <img
+          src="images/masaandlimelogo.jpg"
+          class="logo"
+          alt="Masa & Lime Logo"
+        />
+      </a>
+      <nav class="main-nav">
+        <div class="nav-item dropdown">
+          <span class="dropdown-trigger">Main Dishes</span>
+          <div class="dropdown-menu">
+            <a href="meat.html">Meat</a>
+            <a href="seafood.html">Seafood</a>
+            <a href="vegetarian.html">Vegetarian</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="drinks.html">Drinks</a></div>
+        <div class="nav-item"><a href="sides.html">Sides</a></div>
+        <div class="nav-item">
+          <a href="checkout.html">
+            <img
+              src="images/checkouttrolley.png"
+              alt="Checkout"
+              class="trolley-icon"
+              style="width: 30px; height: auto"
+            />
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Seafood Dishes</h1>
+
+      <div class="mainmenu-grid">
+        <!-- Pescado Zarandeado -->
+        <div class="food-card">
+          <img
+            src="images/pescadozarandeadoseafood.png"
+            alt="Pescado Zarandeado"
+          />
+          <div
+            class="card-info"
+            data-name="Pescado Zarandeado"
+            data-price="30.00"
+          >
+            <h3>Pescado Zarandeado</h3>
+            <p><strong>$30.00</strong></p>
+            <p>
+              Whole split fish marinated in a savory blend of chiles and spices,
+              slow-grilled over open flames, and served with charred onions,
+              fresh limes, and warm tortillas.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/shrimptacos.png" alt="Shrimp Tacos" />
+          <div class="card-info" data-name="Shrimp Tacos" data-price="25.00">
+            <h3>Shrimp Tacos</h3>
+            <p><strong>$25.00</strong></p>
+            <p>
+              Plump, seasoned shrimp seared to perfection, topped with crisp
+              cabbage slaw, cilantro, and a drizzle of creamy chipotle sauce in
+              warm corn tortillas.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img
+            src="images/tostadasdecamaronesseafood.png"
+            alt="Tostadas de Camarones"
+          />
+          <div
+            class="card-info"
+            data-name="Tostadas de Camarones"
+            data-price="27.50"
+          >
+            <h3>Tostadas de Camarones</h3>
+            <p><strong>$27.50</strong></p>
+            <p>
+              Crisp, golden tostadas piled high with tender shrimp, octopus,
+              fresh diced tomatoes, onions, cilantro, and creamy avocado,
+              finished with a splash of lime.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/tacosdepescadaseafood.png" alt="Tacos de Pescada" />
+          <div
+            class="card-info"
+            data-name="Tacos de Pescada"
+            data-price="25.00"
+          >
+            <h3>Tacos de Pescada</h3>
+            <p><strong>$25.00</strong></p>
+            <p>
+              Crispy beer-battered (or grilled) fish topped with shredded
+              cabbage, pico de gallo, and a signature house crema, wrapped in
+              warm tortillas.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/burritodecamaron.jpg" alt="Burrito de Camaron" />
+          <div
+            class="card-info"
+            data-name="Burrito de Camaron"
+            data-price="23.50"
+          >
+            <h3>Burrito de Camaron</h3>
+            <p><strong>$23.50</strong></p>
+            <p>
+              Juicy sautéed shrimp, fluffy rice, beans, fresh pico de gallo, and
+              melted cheese, all rolled into a large, warm flour tortilla.
+            </p>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="updateQuantity(this, -1)">
+                −
+              </button>
+              <span class="quantity">0</span>
+              <button class="qty-btn" onclick="updateQuantity(this, 1)">
+                +
+              </button>
+            </div>
+            <p class="item-total">Total: $0.00</p>
+            <p class="global-total-display">Grand Total: $0.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 40px">
+      <button
+        id="cancel-btn"
+        onclick="showConfirm()"
+        style="
+          padding: 10px 20px;
+          cursor: pointer;
+          background-color: #968d83;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        "
+      >
+        Cancel All
+      </button>
+
+      <div id="confirm-msg" style="display: none; margin-top: 15px">
+        <p>
+          Are you sure?
+          <button
+            onclick="clearCart()"
+            style="
+              color: #ff4d4d;
+              border: none;
+              background: none;
+              cursor: pointer;
+              font-weight: bold;
+            "
+          >
+            Yes
+          </button>
+          <button
+            onclick="hideConfirm()"
+            style="
+              color: #968d83;
+              border: none;
+              background: none;
+              cursor: pointer;
+            "
+          >
+            No
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

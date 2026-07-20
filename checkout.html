@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkout | Masa & Lime</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/masaandlimelogo.jpg" />
+  </head>
+
+  <body>
+    <header class="top-bar">
+      <a href="index.html">
+        <img
+          src="images/masaandlimelogo.jpg"
+          class="logo"
+          alt="Masa & Lime Logo"
+        />
+      </a>
+
+      <nav class="main-nav">
+        <a href="meat.html">Main Dishes</a>
+        <a href="drinks.html">Drinks</a>
+        <a href="sides.html">Sides</a>
+        <a href="checkout.html" class="trolley-link">
+          <img
+            src="images/checkouttrolley.png"
+            alt="Cart"
+            class="trolley-img"
+          />
+        </a>
+      </nav>
+    </header>
+
+    <div class="checkout-container">
+      <h1>Checkout</h1>
+
+      <h2>Select your dining preference</h2>
+
+      <div class="order-type">
+        <div class="order-option" onclick="setOrderType('dine-in')">
+          <img src="images/dinein.png" alt="Dine In" id="dine-in-img" />
+          <p>Dine In</p>
+        </div>
+        <div class="order-option" onclick="setOrderType('takeout')">
+          <img src="images/takeout.png" alt="Takeout" id="takeout-img" />
+          <p>Takeout</p>
+        </div>
+      </div>
+
+      <p id="order-status"></p>
+
+      <div id="checkout-items"></div>
+      <h2 id="grand-total">Total: $0.00</h2>
+
+      <div id="checkout-form">
+        <div class="form-group">
+          <label>Name for the order:</label>
+          <input
+            type="text"
+            id="customer-name"
+            oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Money you have ($):</label>
+          <input type="number" id="money-given" />
+        </div>
+      </div>
+
+      <div id="error-message"></div>
+
+      <div id="order-confirmation">
+        Thank you for ordering, <span id="confirm-name"></span>! Your order is
+        being prepared.
+      </div>
+
+      <button id="confirm-btn" onclick="confirmCheckout()">
+        Confirm & Clear
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
