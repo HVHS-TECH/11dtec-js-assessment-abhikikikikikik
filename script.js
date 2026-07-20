@@ -1,25 +1,8 @@
 window.onload = function () {
-  document.querySelectorAll(".card-info").forEach(function (card) {
-    let itemName = card.dataset.name;
-    let savedQty = sessionStorage.getItem(itemName + "_qty");
-
-    if (savedQty !== null) {
-      card.querySelector(".quantity").innerText = savedQty;
-    }
-
-    updateItemTotal(card);
-  });
-
-  updateGrandTotalDisplay();
-
-  if (document.getElementById("checkout-items")) {
-    let savedType = sessionStorage.getItem("orderType");
-
-    if (savedType) {
-      setOrderType(savedType);
-    }
-
-    renderCheckout();
+  document.querySelectorAll(".card-info").forEach(card => {
+    let name = card.dataset.name;
+    let qty = sessionStorage.getItem(name+"_qty");
+    if(qty) = sessionStorage.getItem(name)
   }
 };
 
@@ -90,24 +73,15 @@ function renderCheckout() {
 
       if (quantity > 0) {
         grandTotal += quantity * price;
-
-        container.innerHTML +=
-          '<div class="checkout-row">' +
-          "<h3>" +
-          itemName +
-          "</h3>" +
-          '<div class="quantity-wrapper">' +
-          '<button class="qty-btn" onclick="changeQty(\'' +
-          itemName +
-          "', -1)\">-</button>" +
-          '<span class="quantity">' +
-          quantity +
-          "</span>" +
-          '<button class="qty-btn" onclick="changeQty(\'' +
-          itemName +
-          "', 1)\">+</button>" +
-          "</div>" +
-          "</div>";
+        container.innerHTML += `
+        <div class="checkout-row">
+          <h3>${itemName}</h3>
+          <div class="quantity-wrapper">
+            <button class="qty-btn" onclick="changeQty('${itemName}', -1)">-</button>
+            <span class="quantity">${quantity}</span>
+            <button class="qty-btn" onclick="changeQty('${itemName}', 1)">+</button>
+          </div>
+        </div>`;
       }
     }
   }
@@ -141,22 +115,15 @@ function setOrderType(type) {
   let statusElement = document.getElementById("order-status");
 
   if (statusElement) {
-    if (type === "dine-in") {
-      statusElement.innerText = "Setting up for dine in";
-    } else {
-      statusElement.innerText = "Setting up for take out";
-    }
+    statusElement.innerText =
+      type === "dine-in" ? "Setting up for dine in" : "Setting up for take out";
   }
 }
 
 function confirmCheckout() {
-  let nameInput = document.getElementById("customer-name");
-  let moneyInput = document.getElementById("money-given");
+  let nameInput = document.getElementById("customer-name").value.trim();
+  let moneyGiven = parseFloat(document.getElementById("money-given").value);
   let errorDiv = document.getElementById("error-message");
-  let confirmDiv = document.getElementById("order-confirmation");
-
-  let name = nameInput.value.trim();
-  let moneyGiven = parseFloat(moneyInput.value);
 
   let totalCost = parseFloat(
     document.getElementById("grand-total").innerText.replace("Total: $", ""),
@@ -186,14 +153,6 @@ function confirmCheckout() {
     name + ". Your change is $" + change.toFixed(2);
 
   setTimeout(clearCart, 5000);
-}
-
-function showConfirm() {
-  document.getElementById("confirm-msg").style.display = "block";
-}
-
-function hideConfirm() {
-  document.getElementById("confirm-msg").style.display = "none";
 }
 
 function clearCart() {
