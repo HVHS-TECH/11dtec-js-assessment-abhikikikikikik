@@ -1,8 +1,15 @@
 window.onload = function () {
-  document.querySelectorAll(".card-info").forEach(card => {
+  document.querySelectorAll(".card-info").forEach((card) => {
     let name = card.dataset.name;
-    let qty = sessionStorage.getItem(name+"_qty");
-    if(qty) = sessionStorage.getItem(name)
+    let qty = sessionStorage.getItem(name + "_qty");
+    if (qty !== null) card.querySelector(".quantity").innerText = qty;
+    updateItemTotal(card);
+  });
+  updateGrandTotalDisplay();
+  if (document.getElementById("checkout-items")) {
+    let type = sessionStorage.getItem("orderType");
+    if (type) setOrderType(type);
+    renderCheckout();
   }
 };
 
@@ -27,10 +34,9 @@ function updateQuantity(button, change) {
 }
 
 function updateItemTotal(card) {
-  let quantity = parseInt(card.querySelector(".quantity").innerText);
-  let price = parseFloat(card.dataset.price);
-  let total = quantity * price;
-
+  let total =
+    parseInt(card.querySelector(".quantity").innerText) *
+    parseFloat(card.dataset.price);
   card.querySelector(".item-total").innerText = "Total: $" + total.toFixed(2);
 }
 
@@ -58,8 +64,6 @@ function updateGrandTotalDisplay() {
 
 function renderCheckout() {
   let container = document.getElementById("checkout-items");
-  let checkoutForm = document.getElementById("checkout-form");
-
   container.innerHTML = "";
   let grandTotal = 0;
 
@@ -74,14 +78,14 @@ function renderCheckout() {
       if (quantity > 0) {
         grandTotal += quantity * price;
         container.innerHTML += `
-        <div class="checkout-row">
-          <h3>${itemName}</h3>
-          <div class="quantity-wrapper">
-            <button class="qty-btn" onclick="changeQty('${itemName}', -1)">-</button>
-            <span class="quantity">${quantity}</span>
-            <button class="qty-btn" onclick="changeQty('${itemName}', 1)">+</button>
-          </div>
-        </div>`;
+          <div class="checkout-row">
+            <h3>${itemName}</h3>
+            <div class="quantity-wrapper">
+              <button class="qty-btn" onclick="changeQty('${itemName}', -1)">-</button>
+              <span class="quantity">${quantity}</span>
+              <button class="qty-btn" onclick="changeQty('${itemName}', 1)">+</button>
+            </div>
+          </div>`;
       }
     }
   }
@@ -89,29 +93,23 @@ function renderCheckout() {
   document.getElementById("grand-total").innerText =
     "Total: $" + grandTotal.toFixed(2);
 
+  let checkoutForm = document.getElementById("checkout-form");
   if (checkoutForm)
     checkoutForm.style.display = grandTotal > 0 ? "flex" : "none";
 }
 
 function changeQty(name, change) {
-  let currentQty = parseInt(sessionStorage.getItem(name + "_qty")) + change;
-
-  if (currentQty < 0) {
-    currentQty = 0;
-  }
-
-  if (currentQty > 9) {
-    currentQty = 9;
-  }
+  let currentQty = Math.max(
+    0,
+    Math.min(9, parseInt(sessionStorage.getItem(name + "_qty")) + change),
+  );
 
   sessionStorage.setItem(name + "_qty", currentQty);
-
   renderCheckout();
 }
 
 function setOrderType(type) {
   sessionStorage.setItem("orderType", type);
-
   let statusElement = document.getElementById("order-status");
 
   if (statusElement) {
@@ -121,38 +119,42 @@ function setOrderType(type) {
 }
 
 function confirmCheckout() {
-  let nameInput = document.getElementById("customer-name").value.trim();
+  let name = document.getElementById("customer-name").value.trim();
   let moneyGiven = parseFloat(document.getElementById("money-given").value);
   let errorDiv = document.getElementById("error-message");
-
   let totalCost = parseFloat(
     document.getElementById("grand-total").innerText.replace("Total: $", ""),
   );
 
-  if (name === "") {
+  if (!name) {
     errorDiv.innerText = "Please enter your name!";
     errorDiv.style.display = "block";
     return;
   }
-
   if (isNaN(moneyGiven) || moneyGiven < totalCost) {
     errorDiv.innerText = "Warning: Not enough money!";
     errorDiv.style.display = "block";
     return;
   }
 
-  let change = moneyGiven - totalCost;
-
   errorDiv.style.display = "none";
   document.getElementById("checkout-form").style.display = "none";
   document.getElementById("confirm-btn").style.display = "none";
-
-  confirmDiv.style.display = "block";
-
+  document.getElementById("order-confirmation").style.display = "block";
   document.getElementById("confirm-name").innerText =
-    name + ". Your change is $" + change.toFixed(2);
+    `${name}. Your change is $${(moneyGiven - totalCost).toFixed(2)}`;
 
   setTimeout(clearCart, 5000);
+}
+
+function showConfirm() {
+  let confirmMsg = document.getElementById("confirm-msg");
+  if (confirmMsg) confirmMsg.style.display = "block";
+}
+
+function hideConfirm() {
+  let confirmMsg = document.getElementById("confirm-msg");
+  if (confirmMsg) confirmMsg.style.display = "none";
 }
 
 function clearCart() {

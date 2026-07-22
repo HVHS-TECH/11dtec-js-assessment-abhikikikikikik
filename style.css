@@ -102,6 +102,7 @@ body {
   font-size: 42px;
   color: #3e3830;
   margin-bottom: 5px;
+  user-select: none;
 }
 
 .second-heading {
@@ -110,6 +111,7 @@ body {
   margin-top: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  user-select: none;
 }
 
 .container p {
@@ -157,6 +159,7 @@ body {
   font-size: 24px;
   color: #222;
   line-height: 1.2;
+  user-select: none;
 }
 
 .card-info p {
@@ -178,6 +181,7 @@ body {
   background-color: transparent;
   border: none;
   margin-top: 15px;
+  user-select: none;
 }
 
 .qty-btn {
@@ -198,6 +202,7 @@ body {
   padding: 0 10px;
   font-weight: normal;
   color: #333;
+  user-select: none;
 }
 
 .preference-container button {
@@ -267,6 +272,7 @@ body {
   color: #8a7e72;
   font-size: 18px;
   margin-bottom: 20px;
+  user-select: none;
 }
 
 .checkout-row {
@@ -278,6 +284,10 @@ body {
   margin-bottom: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-row h3 {
+  user-select: none;
 }
 
 #checkout-form {
@@ -304,6 +314,7 @@ body {
 #checkout-form label {
   font-weight: bold;
   margin-bottom: 8px;
+  user-select: none;
 }
 
 #customer-name,
@@ -322,6 +333,7 @@ body {
   font-weight: bold;
   margin: 10px 0;
   display: none;
+  user-select: none;
 }
 
 #order-confirmation {
@@ -330,6 +342,7 @@ body {
   font-weight: bold;
   margin: 20px 0;
   font-size: 19px;
+  user-select: none;
 }
 
 #confirm-btn {
