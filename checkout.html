@@ -7,7 +7,9 @@
     <link rel="icon" type="image/png" href="images/masaandlimelogo.jpg" />
   </head>
 
-  <div>
+  <!-- // AI Generated Image -->
+
+  <body>
     <header class="top-bar">
       <a href="index.html">
         <img
@@ -78,19 +80,17 @@
       <button id="confirm-btn" onclick="confirmCheckout()">
         Confirm & Clear
       </button>
+
+      <div id="receipt-box" style="display: none">
+        <h3>Receipt</h3>
+        <p id="receipt-customer-name"></p>
+        <div id="receipt-items-list"></div>
+        <hr class="receipt-divider" />
+        <p id="receipt-total"></p>
+        <p id="receipt-money-given"></p>
+        <p id="receipt-change"></p>
+      </div>
     </div>
-
-
-    <div id="receipt-box"
-    </h3>Receipt</h3>
-    <div id="receipt-items-list"></div>
-    <hr class="receipt-divider">
-    <p id="receipt-total"></p>
-    <p id ="receipt-money-total"></p>
-    <p id ="receipt-money-given"></p>
-    <p id ="receipt-change"></p>
-  </div>
-</div>
 
     <script src="script.js"></script>
   </body>
