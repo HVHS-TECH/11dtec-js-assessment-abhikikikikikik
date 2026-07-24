@@ -1,7 +1,12 @@
+// Runs when the webpage finishes loading
 window.onload = function () {
+  // Finds every food card item
   const cards = document.querySelectorAll(".card-info");
+  // Goes through each card 1 by 1
   for (let i = 0; i < cards.length; i++) {
+    // Gets the current card
     const card = cards[i];
+    // Gets the food name from HTML pages
     const name = card.getAttribute("data-name"); // Grabs the item name from the HTML attribute
     const qty = sessionStorage.getItem(name + "_qty"); // Pulls the previously saved quantity from browser session storage
     if (qty !== null) {
@@ -24,7 +29,9 @@ window.onload = function () {
 
 // Function : Update quantity
 function updateQuantity(button, change) {
+  // Find the food card the button belongs to
   const card = button.closest(".card-info"); // Searches in the DOM to find the parent container with this class
+  // Finds the quantity display
   const quantity = card.querySelector(".quantity");
   const itemName = card.getAttribute("data-name"); // Grabs the item name from the HTML attribute
   const price = card.getAttribute("data-price"); // Grabs the item price from the HTML attribute
@@ -87,7 +94,7 @@ function renderCheckout() {
   const container = document.getElementById("checkout-items");
   container.innerHTML = "";
   let grandTotal = 0;
-  const cartArray = []; // CREATING AN ARRAY
+  const cartArray = []; // Making an array
 
   for (let i = 0; i < sessionStorage.length; i++) {
     const key = sessionStorage.key(i);
@@ -158,24 +165,29 @@ function setOrderType(type) {
   sessionStorage.setItem("orderType", type);
   const statusElement = document.getElementById("order-status");
 
-  // Checked if the user clicked dine in or take out
+  // Checks if the user clicked dine in or take out
   if (statusElement) {
     if (type === "dine-in") {
-      statusElement.innerText = "Setting up for dine in"; // Whatever you pick will determine whether your dining in or taking out?
+      // Displays the dine in message
+      statusElement.innerText = "Setting up for dine in";
     } else {
-      statusElement.innerText = "Setting up for take out"; // Whatever you pick will determine whether your dining in or taking out?
+      // Displays the take out message
+      statusElement.innerText = "Setting up for take out";
     }
   }
 }
 
 // Function: Confirm Checkout
 function confirmCheckout() {
-  const name = document.getElementById("customer-name").value.trim(); // This will trim whitespace from both ends of the input string
-  const moneyGiven = parseFloat(document.getElementById("money-given").value); // Converts the text input into a decimal number
+  // This will trim whitespace from both ends of the input string
+  const name = document.getElementById("customer-name").value.trim();
+  // Converts the text input into a decimal number
+  const moneyGiven = parseFloat(document.getElementById("money-given").value);
   const errorDiv = document.getElementById("error-message");
 
   const totalText = document.getElementById("grand-total").innerText;
-  const totalCost = parseFloat(totalText.replace("Total: $", "")); // Cleans the text string to get just the number value for comparison
+  // Cleans the text string to get just the number value for comparison
+  const totalCost = parseFloat(totalText.replace("Total: $", ""));
 
   if (name === "") {
     errorDiv.innerText = "Please enter your name!";
@@ -195,6 +207,7 @@ function confirmCheckout() {
   document.getElementById("order-confirmation").style.display = "block";
 
   // Math calculation logic for change
+  // Calculates how much much money user should get back
   let change = moneyGiven - totalCost;
   document.getElementById("confirm-name").innerText =
     name + ". Your change is $" + change.toFixed(2);
@@ -207,21 +220,29 @@ function confirmCheckout() {
 
   // Generate receipt items with simple text
   const receiptContainer = document.getElementById("receipt-items-list");
+  // Clears any previous receipt items before adding more
   receiptContainer.innerHTML = "";
   const cartArray = []; // Creating an array
+
+  // Loops through every saved item in sessionStorage
 
   for (let i = 0; i < sessionStorage.length; i++) {
     const key = sessionStorage.key(i);
 
+    // This code only uses keys that store quantities
     if (key.endsWith("_qty")) {
+      // Gets the original item by removing "_qty"
       let itemName = key.replace("_qty", "");
+      // This reads the quantity that was saved for an item
       let quantity = parseInt(sessionStorage.getItem(key)); // Converts the stored text quantity into a whole number
 
-      // Using push to add an item to array
+      // This code stores the users receipt info in an array
       cartArray.push({ name: itemName, qty: quantity });
 
       //Keeps track of your orders, quantity ordered, and price totals
+      //This piece of code displays only the items users ordered and put in their cart
       if (quantity > 0) {
+        //Adds each ordered item into the receipt
         receiptContainer.innerHTML +=
           '<div class="checkout-row">' +
           "<h3>" +
@@ -238,38 +259,48 @@ function confirmCheckout() {
   }
 
   // Extra details for your receipt (Prices, change)
+  //Shows the users final receipt total
   document.getElementById("receipt-total").innerText =
     "Grand Total: $" + totalCost.toFixed(2);
+  //Shows how much much money the customer entered
+
   document.getElementById("receipt-money-given").innerText =
     "Money Given: $" + moneyGiven.toFixed(2);
 
-  // Math calculate for receipt change
+  // Shows the users change
   document.getElementById("receipt-change").innerText =
     "Change: $" + change.toFixed(2);
 
   // Style for the receipt
   let receiptBox = document.getElementById("receipt-box");
+  //Makes the receipt visible and follows the css to show the receipt after checkout is complete.
   if (receiptBox) {
     receiptBox.style.display = "block";
   }
 
-  setTimeout(clearCart, 5000); // Has a delay of 5 seconds before running clearCart code
+  // Has a delay of 5 seconds before running clearCart code
+  setTimeout(clearCart, 5000);
 }
 
 // Function : Shows confirmation
 function showConfirm() {
+  //Finds the confirmation message
   let confirmMsg = document.getElementById("confirm-msg");
+  //Makes the confirmation message visible for users
   if (confirmMsg) confirmMsg.style.display = "block";
 }
 
 // Function: Hides confirmation
 function hideConfirm() {
+  //Finds the confirmation message
   let confirmMsg = document.getElementById("confirm-msg");
   if (confirmMsg) confirmMsg.style.display = "none";
 }
 
 // Function : Clears cart and takes you back to homepage
 function clearCart() {
-  sessionStorage.clear(); // This code wipes out all stored data inside the browser's session storage
-  window.location.href = "index.html"; //  This change the browser window location to redirect back to the home page
+  // This code wipes out all stored data inside the browser's session storage
+  sessionStorage.clear();
+  //  This change the browser window location to redirect back to the home page
+  window.location.href = "index.html";
 }
